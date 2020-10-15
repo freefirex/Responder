@@ -148,7 +148,7 @@ def ParseLDAPPacket(data, client, Challenge):
 class LDAP(BaseRequestHandler):
 	def handle(self):
 		try:
-			self.request.settimeout(0.4)
+			self.request.settimeout(settings.Config.LDAPTimeout)
 			data = self.request.recv(8092)
 			Challenge = RandomChallenge()
 			for x in range(5):

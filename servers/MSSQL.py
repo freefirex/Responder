@@ -128,7 +128,7 @@ class MSSQL(BaseRequestHandler):
 			self.ntry = 0
 			while True:
 				data = self.request.recv(1024)
-				self.request.settimeout(1)
+				self.request.settimeout(settings.Config.MSSQLTimeout)
 				Challenge = RandomChallenge()
 
 				if not data:

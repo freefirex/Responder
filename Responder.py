@@ -43,6 +43,13 @@ parser.add_option('-F','--ForceWpadAuth',  action="store_true", help="Force NTLM
 parser.add_option('-P','--ProxyAuth',       action="store_true", help="Force NTLM (transparently)/Basic (prompt) authentication for the proxy. WPAD doesn't need to be ON. This option is highly effective when combined with -r. Default: False", dest="ProxyAuth_On_Off", default=False)
 
 parser.add_option('--lm',                  action="store_true", help="Force LM hashing downgrade for Windows XP/2003 and earlier. Default: False", dest="LM_On_Off", default=False)
+parser.add_option('--httptimeout',         action="store",      help="Configures the timeout in use by http(s) server threads",  dest="HTTPTimeout", type=float, default=3) 
+parser.add_option('--browsertimeout',      action="store",      help="Configures the timeout in use by smb browser fingerprinter", dest="BrowserTimeout", type=float, default=0.3)
+parser.add_option('--ldaptimeout',         action="store",      help="Configures the timeout in use by LDAP server threads", dest="LDAPTimeout", type=float, default=0.4)
+parser.add_option('--mssqltimeout',        action="store",      help="Configures the timeout in use by MSSQL server threads", dest="MSSQLTimeout", type=float, default=1)
+parser.add_option('--proxytimeout',        action="store",      help="Configures the timeout in use by proxy server threads", dest="ProxyTimeout", type=float, default=3)
+parser.add_option('--rdptimeout',          action="store",      help="Configures the timeout in use by RDP server threads", dest="RDPTimeout", type=float, default=30)
+parser.add_option('--smbtimeout',          action="store",      help="Configures the timeout in use by SMB server threads", dest="SMBTimeout", type=float, default=1)
 parser.add_option('-v','--verbose',        action="store_true", help="Increase verbosity.", dest="Verbose")
 options, args = parser.parse_args()
 

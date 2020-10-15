@@ -95,7 +95,7 @@ class RDP(BaseRequestHandler):
 	def handle(self):
 		try:
 			data = self.request.recv(1024)
-			self.request.settimeout(30)
+			self.request.settimeout(settings.Config.RDPTimeout)
 			Challenge = RandomChallenge()
 
 			if data[11:12] == b'\x01':
@@ -106,7 +106,7 @@ class RDP(BaseRequestHandler):
 				buffer1 = str(h)
 				self.request.send(NetworkSendBufferPython2or3(buffer1))
 				SSLsock = ssl.wrap_socket(self.request, certfile=cert, keyfile=key, ssl_version=ssl.PROTOCOL_TLS,server_side=True)
-				SSLsock.settimeout(30)
+				SSLsock.settimeout(settings.Config.RDPTimeout)
 				data = SSLsock.read(8092)
 				if FindNTLMNegoStep(data) == b'\x01\x00\x00\x00':
 					x = RDPNTLMChallengeAnswer(NTLMSSPNtServerChallenge=NetworkRecvBufferPython2or3(Challenge))

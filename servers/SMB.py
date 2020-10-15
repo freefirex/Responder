@@ -194,7 +194,7 @@ class SMB1(BaseRequestHandler):  # SMB1 & SMB2 Server class, NTLMSSP
 			self.ntry = 0
 			while True:
 				data = self.request.recv(1024)
-				self.request.settimeout(1)
+				self.request.settimeout(settings.Config.SMBTimeout)
 				Challenge = RandomChallenge()
 
 				if not data:
@@ -333,7 +333,7 @@ class SMB1(BaseRequestHandler):  # SMB1 & SMB2 Server class, NTLMSSP
 class SMB1LM(BaseRequestHandler):  # SMB Server class, old version
 	def handle(self):
 		try:
-			self.request.settimeout(0.5)
+			self.request.settimeout(settings.Config.SMBTimeout / 2)
 			data = self.request.recv(1024)
 			Challenge = RandomChallenge()
 			if data[0] == b"\x81":  #session request 139

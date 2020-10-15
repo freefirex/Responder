@@ -97,7 +97,7 @@ def RapFinger(Host, Domain, Type):
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.connect((Host,445))
-		s.settimeout(0.3)
+		s.settimeout(settings.Config.BrowserTimeout)
 
 		Header = SMBHeader(cmd="\x72",mid="\x01\x00")
 		Body = SMBNegoData()

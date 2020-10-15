@@ -269,7 +269,7 @@ class HTTP(BaseRequestHandler):
 		try:
 			Challenge = RandomChallenge()
 			while True:
-				self.request.settimeout(3)
+				self.request.settimeout(settings.Config.HTTPTimeout)
 				remaining = 10*1024*1024 #setting max recieve size
 				data = ''
 				while True:

@@ -179,6 +179,13 @@ class Settings:
 		self.AnalyzeMode        = options.Analyze
 		self.Verbose            = options.Verbose
 		self.ProxyAuth_On_Off   = options.ProxyAuth_On_Off
+		self.HTTPTimeout        = options.HTTPTimeout
+		self.BrowserTimeout     = options.BrowserTimeout
+		self.LDAPTimeout        = options.LDAPTimeout
+		self.MSSQLTimeout       = options.MSSQLTimeout
+		self.ProxyTimeout       = options.ProxyTimeout
+		self.RDPTimeout         = options.RDPTimeout
+		self.SMBTimeout         = options.SMBTimeout
 		self.CommandLine        = str(sys.argv)
 
 		if self.ExternalIP:
